@@ -1,11 +1,24 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
+  <a-config-provider :locale="locale">
+    <div id="app">
+      <router-view />
+    </div>
+  </a-config-provider>
 </template>
+<script lang="ts">
+import zhCN from "ant-design-vue/es/locale/zh_CN";
 
+import { ConfigProvider } from "ant-design-vue";
+import { defineComponent, ref } from "vue";
+export default defineComponent({
+  components: { AConfigProvider: ConfigProvider },
+  setup() {
+    return {
+      locale: ref(zhCN),
+    };
+  },
+});
+</script>
 <style lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
